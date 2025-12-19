@@ -60,7 +60,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
     if (!chartData || chartData.length === 0) return null;
 
     return (
-        <div className="glass-panel" style={{ padding: "2rem", marginTop: "2rem" }}>
+        <div className="glass-panel" style={{ padding: "1rem", marginTop: "2rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1.5rem" }}>
                 <h3 style={{ fontSize: "1.25rem", fontWeight: 600 }}>予報グラフ</h3>
 
@@ -94,9 +94,9 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                 </div>
             </div>
 
-            <div style={{ height: "300px", width: "100%" }}>
+            <div style={{ height: "300px", width: "100%", marginLeft: "-10px" }}>
                 <ResponsiveContainer width="100%" height="100%">
-                    <ComposedChart data={chartData}>
+                    <ComposedChart data={chartData} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
                         <defs>
                             <linearGradient id="colorTemp" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="5%" stopColor="#38bdf8" stopOpacity={0.8} />
@@ -123,7 +123,8 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                             tickLine={false}
                             axisLine={false}
                             unit="°"
-                            dx={-10}
+                            width={30}
+                            dx={-5}
                         />
                         {mode === "24h" && (
                             <YAxis
@@ -134,7 +135,8 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                                 tickLine={false}
                                 axisLine={false}
                                 unit="m/s"
-                                dx={10}
+                                width={35}
+                                dx={5}
                             />
                         )}
                         <Tooltip

@@ -18,7 +18,7 @@ export default function WeeklyForecast({ data }: WeeklyForecastProps) {
                 週間予報
             </h3>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                 {data.time.map((time, index) => {
                     const weatherCode = data.weather_code[index];
                     const info = getWeatherInfo(weatherCode);
@@ -35,13 +35,13 @@ export default function WeeklyForecast({ data }: WeeklyForecastProps) {
                                 display: "grid",
                                 gridTemplateColumns: "70px 90px 1fr 1fr 80px",
                                 alignItems: "center",
-                                padding: "0.75rem",
+                                padding: "0.5rem",
                                 borderRadius: "1rem",
                                 background: "#ffffff",
                                 border: "2px solid #e0f2fe",
                                 boxShadow: "0 2px 0 #e0f2fe",
-                                gap: "0.5rem",
-                                marginBottom: "0.5rem"
+                                gap: "0.25rem",
+                                marginBottom: "0.25rem"
                             }}
                         >
                             {/* スマホレイアウト用ラッパー: Row 1 (日付・天気) */}

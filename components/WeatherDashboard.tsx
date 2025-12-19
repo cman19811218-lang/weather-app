@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import CurrentWeather from "./CurrentWeather";
 import ForecastGraph from "./ForecastGraph";
+import WeeklyForecast from "./WeeklyForecast";
 import { getWeather } from "@/lib/api";
 import { WeatherResponse, SearchResult } from "@/lib/types";
 
@@ -52,6 +53,7 @@ export default function WeatherDashboard() {
                 <div style={{ animation: "fadeIn 0.5s ease-out" }}>
                     <CurrentWeather data={data} locationName={locationName} />
                     <ForecastGraph hourlyData={data.hourly} dailyData={data.daily} />
+                    <WeeklyForecast data={data.daily} />
                 </div>
             ) : (
                 <div style={{ textAlign: "center", marginTop: "4rem" }}>

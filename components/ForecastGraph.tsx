@@ -60,19 +60,20 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
     if (!chartData || chartData.length === 0) return null;
 
     return (
-        <div className="glass-panel" style={{ padding: "1rem", marginTop: "2rem" }}>
+        <div className="glass-panel" style={{ padding: "1.5rem", marginTop: "2rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1.5rem" }}>
-                <h3 style={{ fontSize: "1.25rem", fontWeight: 600 }}>予報グラフ</h3>
+                <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--text-primary)" }}>予報グラフ</h3>
 
-                <div style={{ display: "flex", background: "rgba(0,0,0,0.2)", borderRadius: "0.5rem", padding: "0.25rem" }}>
+                <div style={{ display: "flex", background: "var(--bg-secondary)", borderRadius: "1rem", padding: "0.25rem", border: "1px solid var(--card-border)" }}>
                     <button
                         onClick={() => setMode("24h")}
                         style={{
-                            padding: "0.25rem 0.75rem",
-                            borderRadius: "0.25rem",
-                            background: mode === "24h" ? "var(--bg-secondary)" : "transparent",
+                            padding: "0.4rem 1rem",
+                            borderRadius: "0.8rem",
+                            background: mode === "24h" ? "#ffffff" : "transparent",
                             color: mode === "24h" ? "var(--accent-color)" : "var(--text-secondary)",
-                            fontWeight: 500,
+                            fontWeight: 700,
+                            boxShadow: mode === "24h" ? "0 2px 4px rgba(0,0,0,0.05)" : "none",
                             transition: "all 0.2s"
                         }}
                     >
@@ -81,11 +82,12 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                     <button
                         onClick={() => setMode("weekly")}
                         style={{
-                            padding: "0.25rem 0.75rem",
-                            borderRadius: "0.25rem",
-                            background: mode === "weekly" ? "var(--bg-secondary)" : "transparent",
+                            padding: "0.4rem 1rem",
+                            borderRadius: "0.8rem",
+                            background: mode === "weekly" ? "#ffffff" : "transparent",
                             color: mode === "weekly" ? "var(--accent-color)" : "var(--text-secondary)",
-                            fontWeight: 500,
+                            fontWeight: 700,
+                            boxShadow: mode === "weekly" ? "0 2px 4px rgba(0,0,0,0.05)" : "none",
                             transition: "all 0.2s"
                         }}
                     >
@@ -99,15 +101,15 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                     <ComposedChart data={chartData} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
                         <defs>
                             <linearGradient id="colorTemp" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#38bdf8" stopOpacity={0.8} />
-                                <stop offset="95%" stopColor="#38bdf8" stopOpacity={0} />
+                                <stop offset="5%" stopColor="#f97316" stopOpacity={0.5} />
+                                <stop offset="95%" stopColor="#f97316" stopOpacity={0} />
                             </linearGradient>
                             <linearGradient id="colorFeels" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#818cf8" stopOpacity={0.8} />
-                                <stop offset="95%" stopColor="#818cf8" stopOpacity={0} />
+                                <stop offset="5%" stopColor="#ec4899" stopOpacity={0.5} />
+                                <stop offset="95%" stopColor="#ec4899" stopOpacity={0} />
                             </linearGradient>
                         </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" vertical={false} />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" vertical={false} />
                         <XAxis
                             dataKey="time"
                             stroke="var(--text-secondary)"
@@ -128,12 +130,13 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                         />
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                borderRadius: '8px',
-                                color: '#f8fafc'
+                                backgroundColor: '#ffffff',
+                                border: '2px solid #e2e8f0',
+                                borderRadius: '12px',
+                                color: '#1e293b',
+                                boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
                             }}
-                            itemStyle={{ color: '#f8fafc' }}
+                            itemStyle={{ color: '#334155' }}
                         />
                         <Legend wrapperStyle={{ paddingTop: "20px" }} />
 
@@ -144,7 +147,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                                     type="monotone"
                                     dataKey="temp"
                                     name="気温"
-                                    stroke="#38bdf8"
+                                    stroke="#f97316"
                                     fillOpacity={1}
                                     fill="url(#colorTemp)"
                                     strokeWidth={3}
@@ -154,7 +157,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                                     type="monotone"
                                     dataKey="feels_like"
                                     name="体感気温"
-                                    stroke="#818cf8"
+                                    stroke="#ec4899"
                                     fillOpacity={1}
                                     fill="url(#colorFeels)"
                                     strokeDasharray="5 5"
@@ -168,7 +171,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                                     type="monotone"
                                     dataKey="temp_max"
                                     name="最高気温"
-                                    stroke="#f59e0b"
+                                    stroke="#f97316"
                                     fill="url(#colorTemp)"
                                     strokeWidth={3}
                                 />
@@ -177,7 +180,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                                     type="monotone"
                                     dataKey="temp_min"
                                     name="最低気温"
-                                    stroke="#38bdf8"
+                                    stroke="#3b82f6"
                                     fill="transparent"
                                     strokeWidth={3}
                                 />
@@ -186,7 +189,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                                     type="monotone"
                                     dataKey="feels_like_max"
                                     name="最高体感"
-                                    stroke="#f59e0b"
+                                    stroke="#f97316"
                                     fill="transparent"
                                     strokeDasharray="4 4"
                                     strokeWidth={2}
@@ -196,7 +199,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                                     type="monotone"
                                     dataKey="feels_like_min"
                                     name="最低体感"
-                                    stroke="#38bdf8"
+                                    stroke="#3b82f6"
                                     fill="transparent"
                                     strokeDasharray="4 4"
                                     strokeWidth={2}
@@ -209,18 +212,18 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
 
             {/* 風速グラフは24時間・週間とも共通の構造で表示（データキーは'wind'で共通化済み） */}
             <div style={{ height: "160px", width: "100%", marginLeft: "-10px", marginTop: "1rem" }}>
-                <h4 style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginBottom: "0.5rem", paddingLeft: "10px" }}>
+                <h4 style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginBottom: "0.5rem", paddingLeft: "10px", fontWeight: 700 }}>
                     {mode === "24h" ? "風速" : "最大風速"}
                 </h4>
                 <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart data={chartData} margin={{ top: 5, right: 0, left: 0, bottom: 0 }}>
                         <defs>
                             <linearGradient id="colorWind" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
+                                <stop offset="5%" stopColor="#10b981" stopOpacity={0.6} />
                                 <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
                             </linearGradient>
                         </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" vertical={false} />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" vertical={false} />
                         <XAxis
                             dataKey="time"
                             stroke="var(--text-secondary)"
@@ -240,12 +243,13 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                         />
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                borderRadius: '8px',
-                                color: '#f8fafc'
+                                backgroundColor: '#ffffff',
+                                border: '2px solid #e2e8f0',
+                                borderRadius: '12px',
+                                color: '#1e293b',
+                                boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
                             }}
-                            itemStyle={{ color: '#f8fafc' }}
+                            itemStyle={{ color: '#334155' }}
                         />
                         <Area
                             type="monotone"
@@ -254,7 +258,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                             stroke="#10b981"
                             fillOpacity={1}
                             fill="url(#colorWind)"
-                            strokeWidth={2}
+                            strokeWidth={3}
                         />
                     </ComposedChart>
                 </ResponsiveContainer>

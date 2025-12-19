@@ -128,7 +128,7 @@ export default function SearchBar({ onLocationSelect }: SearchBarProps) {
                                 transition: "background 0.2s",
                             }}
                             onMouseEnter={(e) =>
-                                (e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)")
+                                (e.currentTarget.style.background = "var(--bg-secondary)")
                             }
                             onMouseLeave={(e) => (e.currentTarget.style.background = "none")}
                         >

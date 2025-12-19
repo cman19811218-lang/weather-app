@@ -3,6 +3,7 @@
 import { Wind, Droplets, Thermometer } from "lucide-react";
 
 import { WeatherResponse } from "@/lib/types";
+import { getWeatherInfo } from "@/lib/weatherCodes";
 
 interface CurrentWeatherProps {
     data: WeatherResponse;
@@ -20,18 +21,8 @@ export default function CurrentWeather({ data, locationName }: CurrentWeatherPro
         weather_code,
     } = data.current;
 
-    // 天気コードに基づく表示（簡易版）
-    // 実際には詳細なマッピングが必要
-    const getWeatherLabel = (code: number) => {
-        if (code === 0) return "快晴";
-        if (code >= 1 && code <= 3) return "晴れ/曇り";
-        if (code >= 45 && code <= 48) return "霧";
-        if (code >= 51 && code <= 67) return "雨";
-        if (code >= 71 && code <= 77) return "雪";
-        if (code >= 80 && code <= 82) return "にわか雨";
-        if (code >= 95) return "雷雨";
-        return "不明";
-    };
+    // 天気情報を取得
+    const weatherInfo = getWeatherInfo(weather_code);
 
     return (
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -44,8 +35,9 @@ export default function CurrentWeather({ data, locationName }: CurrentWeatherPro
             >
                 {Math.round(temperature_2m)}°
             </div>
-            <div style={{ fontSize: "1.5rem", color: "var(--text-secondary)", margin: "1rem 0" }}>
-                {getWeatherLabel(weather_code)}
+            <div style={{ fontSize: "1.5rem", color: "var(--text-secondary)", margin: "1rem 0", display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem" }}>
+                <weatherInfo.icon size={32} color={weatherInfo.color} />
+                <span>{weatherInfo.label}</span>
             </div>
 
             <div

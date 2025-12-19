@@ -1,27 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette - Premium Dark Theme */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --accent-color: #38bdf8;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  /* Color Palette - Casual Pop Theme */
+  --bg-primary: #e0f2fe; /* Light Sky Blue */
+  --bg-secondary: #f0f9ff;
+  --accent-color: #f97316; /* Bright Orange */
+  --text-primary: #1e3a8a; /* Dark Blue */
+  --text-secondary: #64748b; /* Slate Gray */
+  
+  --card-bg: #ffffff;
+  --card-border: #bfdbfe;
+  
   --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
+  --warning: #fbbf24;
+  --danger: #f43f5e;
 
   /* Gradients */
-  --gradient-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.0) 100%);
+  --gradient-bg: linear-gradient(135deg, #e0f2fe 0%, #fff7ed 100%); /* Sky to Cream */
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 15px rgba(56, 189, 248, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(30, 58, 138, 0.1), 0 2px 4px -1px rgba(30, 58, 138, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(30, 58, 138, 0.1), 0 4px 6px -2px rgba(30, 58, 138, 0.05);
+  --shadow-pop: 4px 4px 0px 0px rgba(30, 58, 138, 0.1);
 
   /* Animation */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -38,14 +39,15 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: 'Inter', sans-serif;
+  /* Font is set in layout.tsx */
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
 }
 
 body {
-  background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%);
+  background: var(--gradient-bg);
+  background-attachment: fixed;
 }
 
 a {
@@ -61,16 +63,16 @@ a {
 }
 
 .glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 1rem;
-  box-shadow: var(--shadow-lg);
+  background: var(--card-bg);
+  /* backdrop-filter: blur(12px); Glass effect removed for flat pop style */
+  border: 2px solid var(--card-border);
+  border-radius: 1.5rem; /* More rounded */
+  box-shadow: var(--shadow-md), var(--shadow-pop);
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #38bdf8, #818cf8);
+  /* Colorful gradient for text */
+  background: linear-gradient(to right, #0ea5e9, #f97316);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

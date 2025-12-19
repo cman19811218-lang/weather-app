@@ -94,7 +94,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                 </div>
             </div>
 
-            <div style={{ height: "300px", width: "100%", marginLeft: "-10px" }}>
+            <div style={{ height: "200px", width: "100%", marginLeft: "-10px" }}>
                 <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart data={chartData} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
                         <defs>
@@ -126,19 +126,6 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                             width={30}
                             dx={-5}
                         />
-                        {mode === "24h" && (
-                            <YAxis
-                                yAxisId="right"
-                                orientation="right"
-                                stroke="var(--text-secondary)"
-                                fontSize={12}
-                                tickLine={false}
-                                axisLine={false}
-                                unit="m/s"
-                                width={35}
-                                dx={5}
-                            />
-                        )}
                         <Tooltip
                             contentStyle={{
                                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
@@ -172,15 +159,6 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                                     fill="url(#colorFeels)"
                                     strokeDasharray="5 5"
                                     strokeWidth={2}
-                                />
-                                <Line
-                                    yAxisId="right"
-                                    type="monotone"
-                                    dataKey="wind"
-                                    name="風速"
-                                    stroke="#10b981"
-                                    strokeWidth={2}
-                                    dot={false}
                                 />
                             </>
                         ) : (
@@ -228,6 +206,57 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                     </ComposedChart>
                 </ResponsiveContainer>
             </div>
-        </div>
-    );
+
+            {mode === "24h" && (
+                <div style={{ height: "120px", width: "100%", marginLeft: "-10px", marginTop: "1rem" }}>
+                    <h4 style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginBottom: "0.5rem", paddingLeft: "10px" }}>風速</h4>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <ComposedChart data={chartData} margin={{ top: 5, right: 0, left: 0, bottom: 0 }}>
+                            <defs>
+                                <linearGradient id="colorWind" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
+                                </linearGradient>
+                            </defs>
+                            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" vertical={false} />
+                            <XAxis
+                                dataKey="time"
+                                stroke="var(--text-secondary)"
+                                fontSize={12}
+                                tickLine={false}
+                                axisLine={false}
+                                dy={10}
+                            />
+                            <YAxis
+                                stroke="var(--text-secondary)"
+                                fontSize={12}
+                                tickLine={false}
+                                axisLine={false}
+                                unit="m/s"
+                                width={30}
+                                dx={-5}
+                            />
+                            <Tooltip
+                                contentStyle={{
+                                    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    borderRadius: '8px',
+                                    color: '#f8fafc'
+                                }}
+                                itemStyle={{ color: '#f8fafc' }}
+                            />
+                            <Area
+                                type="monotone"
+                                dataKey="wind"
+                                name="風速"
+                                stroke="#10b981"
+                                fillOpacity={1}
+                                fill="url(#colorWind)"
+                                strokeWidth={2}
+                            />
+                        </ComposedChart>
+                    </ResponsiveContainer>
+                </div>
+            )}
+        </div>);
 }

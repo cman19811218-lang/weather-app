@@ -96,7 +96,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
                 </div>
             </div>
 
-            <div style={{ height: "300px", width: "100%", marginLeft: "-10px" }}>
+            <div className="graph-container" style={{ height: "300px", width: "100%", marginLeft: "-10px" }}>
                 <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart data={chartData} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
                         <defs>
@@ -211,7 +211,7 @@ export default function ForecastGraph({ hourlyData, dailyData }: ForecastGraphPr
             </div>
 
             {/* 風速グラフは24時間・週間とも共通の構造で表示（データキーは'wind'で共通化済み） */}
-            <div style={{ height: "160px", width: "100%", marginLeft: "-10px", marginTop: "1rem" }}>
+            <div className="graph-container" style={{ height: "160px", width: "100%", marginLeft: "-10px", marginTop: "1rem" }}>
                 <h4 style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginBottom: "0.5rem", paddingLeft: "10px", fontWeight: 700 }}>
                     {mode === "24h" ? "風速" : "最大風速"}
                 </h4>

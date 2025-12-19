@@ -21,6 +21,7 @@ export interface DailyForecast {
     temperature_2m_min: number[];
     apparent_temperature_max: number[];
     apparent_temperature_min: number[];
+    wind_speed_10m_max: number[];
     weather_code: number[];
 }
 

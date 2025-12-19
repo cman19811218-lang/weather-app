@@ -124,20 +124,24 @@ button {
     /* Reduce shadow on mobile */
   }
 
-  /* Weekly Forecast Mobile Layout */
+  /* Weekly Forecast Mobile Layout - Compact 1 Row Grid */
   .weekly-forecast-item {
-    display: flex !important;
-    /* Override grid */
-    flex-direction: column;
-    align-items: stretch !important;
-    gap: 0.75rem !important;
+    display: grid !important;
+    /* Force Grid */
+    grid-template-columns: 75px 30px 1fr 1fr 50px !important;
+    gap: 0.25rem !important;
+    padding: 0.25rem 0.5rem !important;
+    height: auto !important;
+    align-items: center !important;
   }
 
   .weekly-forecast-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    display: contents !important;
+    /* Remove wrapper div influence */
+  }
+
+  .hide-on-mobile {
+    display: none !important;
   }
 
   /* Graph adjustments */
